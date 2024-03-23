@@ -1,1 +1,1 @@
-# Fullstack-kurssin tehtävien ratkaisut
+# Fullstack-kurssin tehtävien ratkaisut.
