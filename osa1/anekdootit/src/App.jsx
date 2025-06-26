@@ -13,9 +13,16 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [votesArr, setVotes] = useState(new Array(anecdotes.length).fill(0))
 
   const handleClick = () => {
     setSelected(Math.floor(Math.random() * anecdotes.length))
+  }
+
+  const handleVote = () => {
+    const voteCopy = {... votesArr}
+    voteCopy[selected] += 1
+    setVotes(voteCopy)
   }
 
   return (
@@ -23,6 +30,12 @@ const App = () => {
       <p style={{fontSize: 26,
                 fontWeight: '600'}}>
         {anecdotes[selected]}</p>
+      <p style={{fontSize: 18,
+                fontWeight: '400'}}>
+        Anecdote has {votesArr[selected]} votes.</p>
+      <button onClick={handleVote}>
+        Vote
+      </button>
       <button onClick={handleClick}>
         Next anecdote
       </button>
