@@ -14,6 +14,7 @@ const App = () => {
    
   const [selected, setSelected] = useState(0)
   const [votesArr, setVotes] = useState(new Array(anecdotes.length).fill(0))
+  const [most, setMost] = useState(0)
 
   const handleClick = () => {
     setSelected(Math.floor(Math.random() * anecdotes.length))
@@ -22,6 +23,9 @@ const App = () => {
   const handleVote = () => {
     const voteCopy = {... votesArr}
     voteCopy[selected] += 1
+    if (voteCopy[most] < voteCopy[selected]) {
+      setMost(selected)
+    }
     setVotes(voteCopy)
   }
 
@@ -29,8 +33,11 @@ const App = () => {
     <div>
       <p style={{fontSize: 26,
                 fontWeight: '600'}}>
+        Anecdote of the day</p>
+      <p style={{fontSize: 20,
+                fontWeight: '400'}}>
         {anecdotes[selected]}</p>
-      <p style={{fontSize: 18,
+      <p style={{fontSize: 16,
                 fontWeight: '400'}}>
         Anecdote has {votesArr[selected]} votes.</p>
       <button onClick={handleVote}>
@@ -39,6 +46,15 @@ const App = () => {
       <button onClick={handleClick}>
         Next anecdote
       </button>
+      <p style={{fontSize: 26,
+                fontWeight: '600'}}>
+        Anecdote with most votes</p>
+      <p style={{fontSize: 20,
+                fontWeight: '400'}}>
+        {anecdotes[most]}</p>
+      <p style={{fontSize: 16,
+                fontWeight: '400'}}>
+        Anecdote has {votesArr[most]} votes.</p>
     </div>
   )
 }
