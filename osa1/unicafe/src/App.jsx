@@ -33,6 +33,7 @@ const App = () => {
     const updatedAll = all + 1
     setNeutral(updatedNeutral)
     setAll(updatedAll)
+    setAverage((good - bad)/updatedAll)
     setPos(good/updatedAll*100)
   }
 
