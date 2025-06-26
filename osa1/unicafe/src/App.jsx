@@ -2,9 +2,16 @@ import { useState } from 'react'
 
 const Statistics = ({good, bad, neutral}) => {
   const all = good+bad+neutral
-  let all0 = all
   if (all == 0) {
-    all0 = 1
+    return(
+      <div>
+      <h2 style={{fontSize: 26,
+                    fontWeight: '600'}}>
+          Statistics
+        </h2>
+        No feedback given
+    </div>
+    )
   }
   return(
     <div>
@@ -16,8 +23,8 @@ const Statistics = ({good, bad, neutral}) => {
         <p>Neutral {neutral}</p>
         <p>Bad {bad}</p>
         <p>All {all}</p>
-        <p>Average {(good-bad)/all0}</p>
-        <p>Positive {good/all0*100} %</p>
+        <p>Average {(good-bad)/all}</p>
+        <p>Positive {good/all*100} %</p>
     </div>
   )
 }
